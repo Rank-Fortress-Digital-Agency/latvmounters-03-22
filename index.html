@@ -1,326 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      /* Global Styles */
 
-/* Global Styles */
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      body {
+        padding: 40px 10%;
+        background: #f5f5f5;
+      }
 
-body {
-  padding: 40px 10%;
-  background: #f5f5f5;
-}
+      a {
+        text-decoration: none;
+      }
 
-a{
-  text-decoration: none;
-}
+      /* Container Styles */
+      .container {
+        display: flex;
+      }
+      .main-wrapper {
+        flex: 2;
+      }
+      .side-bar {
+        background: #faf9f9;
+        flex: 1;
+        padding: 40px;
+        /* background-color: white; */
+      }
 
-/* Container Styles */
-.container {
-  display: flex;
-}
-.main-wrapper{
-  flex: 2;
-}
-.side-bar{
-  background: #faf9f9;
-  flex: 1;
-  padding: 40px;
-  /* background-color: white; */
-}
+      .side-bar ul {
+        padding: 0 40px;
+        list-style: none;
+      }
 
-.side-bar ul{
-  padding: 0 40px;
-  list-style: none;
-}
+      .side-bar {
+        background: rgb(230, 230, 231);
+      }
 
-.side-bar{
-  background: rgb(230, 230, 231);
-}
+      @media only screen and (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+        .side-bar {
+          background: #b1b828;
+          color: white !important;
+        }
+        .side-bar a {
+          color: white !important;
+        }
+      }
 
+      /* Navigation Menu Styles */
 
-@media only screen and (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .side-bar{
-    background: #b1b828;
-    color: white !important;
-  }
-  .side-bar a{
-    color: white !important;
-  }
-}
+      nav.nav-menu {
+        width: 100%;
+        background-color: #b1b828;
+        padding: 10px;
+      }
 
+      nav.nav-menu ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size: clamp(0.8rem, 1.2vw, 2rem);
+      }
 
+      .nav-menu .nav-item {
+        padding: 15px;
+        transition: background-color 500ms ease-in-out;
+      }
 
-/* Navigation Menu Styles */
+      .nav-menu .nav-item:hover {
+        cursor: pointer;
+        background-color: #f5f5f54d;
+      }
 
-nav.nav-menu {
-  width: 100%;
-  background-color: #b1b828;
-  padding: 10px;
-}
+      .nav-menu .nav-item a {
+        text-decoration: none;
+        color: white;
+      }
 
-nav.nav-menu ul {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  font-size: clamp(.8rem, 1.2vw, 2rem); 
-}
+      /* Main Content Wrapper Styles */
+      .main-wrapper {
+        background: white;
+        padding: 40px;
+      }
 
-.nav-menu .nav-item {
-  padding: 15px;
-  transition: background-color 500ms ease-in-out;
-}
+      section {
+        margin-bottom: 60px;
+      }
 
-.nav-menu .nav-item:hover {
-  cursor: pointer;
-  background-color: #f5f5f54d;
-}
+      section.head,
+      section.youtube-embed {
+        text-align: center;
+      }
 
-.nav-menu .nav-item a{
-  text-decoration: none;
-  color: white;
-}
+      .button-link {
+        display: block;
+        margin: 20px 0 0 0;
+        padding: 10px 40px;
+        width: fit-content;
+        background: #b1b828;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s transform ease-in-out;
+      }
 
+      .button-link:hover {
+        transform: scale(1.05);
+      }
 
-/* Main Content Wrapper Styles */
-.main-wrapper {
-  background: white;
-  padding: 40px;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-section {
-  margin-bottom: 60px;
-}
+      h2 {
+        margin-bottom: 20px;
+      }
 
-section.head,
-section.youtube-embed {
-  text-align: center;
-}
+      p {
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5rem;
+      }
 
-.button-link {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 10px 40px;
-  width: fit-content;
-  background: #b1b828;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s transform ease-in-out;
-}
+      img {
+        max-width: 100%;
+      }
 
-.button-link:hover {
-  transform: scale(1.05);
-}
+      .two-col {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-h1 {
-  font-size: 34px;
-}
+      .two-col div {
+        width: 50%;
+      }
 
-h2 {
-  margin-bottom: 20px;
-}
+      @media only screen and (max-width: 900px) {
+        body {
+          padding: 0;
+        }
 
-p {
-  text-align: justify;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-}
+        .two-col {
+          flex-direction: column;
+        }
 
-img {
-  max-width: 100%;
-}
+        .two-col div {
+          width: 100%;
+        }
 
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
+        .main-wrapper {
+          padding: 5%;
+        }
+      }
+    </style>
+    <title>
+      How To Choose The Right TV Mounting Company For Your Home? | LA TV
+      Mounters
+    </title>
+  </head>
 
-.two-col div {
-  width: 50%;
-}
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li class="nav-item"><a href="https://latvmounters.com/">Main</a></li>
+        <li class="nav-item">
+          <a href="https://g.page/latvmounters?share">Maps</a>
+        </li>
+        <li class="nav-item"><a href="./media.html">Media</a></li>
+      </ul>
+    </nav>
 
-@media only screen and (max-width: 900px) {
-  body {
-    padding: 0;
-  }
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <section
+          style="
+            background-image: url(https://latvmounters.com/wp-content/uploads/2021/10/Speed-and-Efficiency-TV-Mounting-Services.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 350px;
+            padding: 20px;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.137);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+          class="head"
+        >
+          <h1>How To Choose The Right TV Mounting Company For Your Home?</h1>
+        </section>
 
-  .two-col {
-    flex-direction: column;
-  }
+        <section>
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/iplCfCbn7AM"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <a
+            class="button-link"
+            href="https://latvmounters.com/how-to-choose-the-right-tv-mounting-company-for-your-home/"
+            >Read Post</a
+          >
+        </section>
 
-  .two-col div {
-    width: 100%;
-  }
+        <section>
+          <p>
+            There is a multitude of TV mounting companies to choose from when
+            looking to mount your television. It can be hard to decide who to go
+            with and which company will provide the best service for your needs.
+            Here are a few tips on choosing the right TV mounting company for
+            your home.
+          </p>
+          <p>
+            Are you looking for a professional
+            <a href="https://latvmounters.com/services/">TV mounting service</a>
+            in Los Angeles? Look no further than LA TV Mounters. We offer
+            affordable and reliable TV
+            <a
+              href="https://latvmounters.com/services/commercial-tv-mounting-service-los-angeles/"
+              >mounting services for residential and commercial</a
+            >
+            customers. We have years’ experience mounting TVs for residential
+            and commercial customers.
+          </p>
+          <p>
+            If you’re looking for a professional TV
+            <a
+              href="https://latvmounters.com/why-is-tv-mounting-service-important/"
+              >mounting service in Los Angeles</a
+            >, look no further than LA TV Mounters. We offer a wide range of
+            services to meet your needs, and we’re dedicated to providing the
+            highest quality workmanship possible. We understand that not
+            everyone is familiar with mounting a TV, so we take the
+            <a
+              href="https://latvmounters.com/tv-mounting-service-how-to-get-the-perfect-view-every-time/"
+              >time to walk our clients</a
+            >
+            through every step of the process. We also offer a wide range of
+            mounting options, so you can be sure we’ll find the perfect solution
+            for your TV.
+          </p>
+          <p>
+            Are you looking for a quality TV mounting service in Los Angeles?
+            Look no further than LA TV Mounters! Our experienced professionals
+            will take care of everything for you, from mounting your TV to
+            ensuring it’s properly secured. We offer a wide range of services to
+            meet your needs, and our rates are always competitive.
+          </p>
+        </section>
 
-  .main-wrapper {
-    padding: 5%;
-  }
-}
-   </style>
-  <title>How To Choose The Right TV Mounting Company For Your Home? | LA TV Mounters</title>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav class="nav-menu">
-    <ul>
-      <li class="nav-item"><a href="https://latvmounters.com/">Main</a></li>
-      <li class="nav-item"><a href="https://g.page/latvmounters?share">Maps</a></li>
-      <li class="nav-item"><a href="./media.html">Media</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="container">
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <section style="background-image: url(https://latvmounters.com/wp-content/uploads/2021/10/Speed-and-Efficiency-TV-Mounting-Services.jpg); background-attachment: fixed; background-size: cover; min-height: 350px; padding: 20px; box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.137); color: white; display:flex; flex-direction: column; justify-content: center;" class="head">
-        <h1>How To Choose The Right TV Mounting Company For Your Home?</h1>
-      </section>
-
-      <section>
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/iplCfCbn7AM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <a class="button-link"
-                href="https://latvmounters.com/how-to-choose-the-right-tv-mounting-company-for-your-home/">Read Post</a>
-      </section>
-
-      <section>
-          <p>There is a multitude of TV mounting companies to choose from when looking to mount your television. It can be hard to decide who to go with and which company will provide the best service for your needs. Here are a few tips on choosing the right TV mounting company for your home.</p>
-          <p>Are you looking for a professional <a href="https://latvmounters.com/services/">TV mounting service</a> in Los Angeles? Look no further than LA TV Mounters. We offer affordable and reliable TV <a href="https://latvmounters.com/services/commercial-tv-mounting-service-los-angeles/">mounting services for residential and commercial</a> customers. We have years’ experience mounting TVs for residential and commercial customers.</p>
-          <p>If you’re looking for a professional TV <a href="https://latvmounters.com/why-is-tv-mounting-service-important/">mounting service in Los Angeles</a>, look no further than LA TV Mounters. We offer a wide range of services to meet your needs, and we’re dedicated to providing the highest quality workmanship possible. We understand that not everyone is familiar with mounting a TV, so we take the <a href="https://latvmounters.com/tv-mounting-service-how-to-get-the-perfect-view-every-time/">time to walk our clients</a> through every step of the process. We also offer a wide range of mounting options, so you can be sure we’ll find the perfect solution for your TV.</p>
-          <p>Are you looking for a quality TV mounting service in Los Angeles? Look no further than LA TV Mounters! Our experienced professionals will take care of everything for you, from mounting your TV to ensuring it’s properly secured. We offer a wide range of services to meet your needs, and our rates are always competitive.</p>
-      </section>
-
-      <section>
+        <section>
           <div class="two-col">
-              <div>
-                  <img style="width: 100%" src="https://lh3.googleusercontent.com/geougc/AF1QipM5gqAvXoJR6qDA6V07qll-5AwKlo_IxUzkfZxS=h400-no" alt="TV Mounting Service Los Angeles">
-                  <br>
-                  <br>
-                  <img style="width: 100%" src="https://latvmounters.com/wp-content/uploads/2021/10/TV-Mounting-Hollywood-Los-Angeles.jpg" alt="TV Mounting Service Los Angeles">
-              </div>
-              <div>
-                  <h2>Affordable and Reliable TV Mounting Service.</h2>
-                  <p>We are a TV mounting service that offers an affordable and reliable option for mounting your TV. We have been in the business for many years, and our experience ensures that your TV is mounted correctly and safely. We serve all of Los Angeles, so please call us today to schedule an appointment. Y Looking for a professional TV mounting service in LA? Look no further than LA TV Mounters! We offer a wide range of services to meet your needs, and our experienced team will ensure that your TV is mounted safely and securely.</p>
-                  <p>If you’re looking for a professional TV mounting service in Los Angeles, you can’t go wrong with LA TV Mounters. We have over years of experience mounting TVs for homeowners and businesses alike, and we pride ourselves on providing the highest quality service possible. If you’re looking for a professional TV mounting service in Los Angeles, look no further than LA TV Mounters. We have years of experience mounting TVs for both residential and commercial clients. We can mount any TV, regardless of size or weight, and we’ll ensure that it’s securely attached to the wall so it won’t fall.</p>
-                  <p>We also offer many other TV-related services, including cable installation, home theater setup, and antenna installation. We’re the only TV mounting service you’ll need, so don’t hesitate to call us today. We’re available 24/7, and we offer free estimates on all of our services.</p>
-              </div>
+            <div>
+              <img
+                style="width: 100%"
+                src="https://lh3.googleusercontent.com/geougc/AF1QipM5gqAvXoJR6qDA6V07qll-5AwKlo_IxUzkfZxS=h400-no"
+                alt="TV Mounting Service Los Angeles"
+              />
+              <br />
+              <br />
+              <img
+                style="width: 100%"
+                src="https://latvmounters.com/wp-content/uploads/2021/10/TV-Mounting-Hollywood-Los-Angeles.jpg"
+                alt="TV Mounting Service Los Angeles"
+              />
+            </div>
+            <div>
+              <h2>Affordable and Reliable TV Mounting Service.</h2>
+              <p>
+                We are a TV mounting service that offers an affordable and
+                reliable option for mounting your TV. We have been in the
+                business for many years, and our experience ensures that your TV
+                is mounted correctly and safely. We serve all of Los Angeles, so
+                please call us today to schedule an appointment. Y Looking for a
+                professional TV mounting service in LA? Look no further than LA
+                TV Mounters! We offer a wide range of services to meet your
+                needs, and our experienced team will ensure that your TV is
+                mounted safely and securely.
+              </p>
+              <p>
+                If you’re looking for a professional TV mounting service in Los
+                Angeles, you can’t go wrong with LA TV Mounters. We have over
+                years of experience mounting TVs for homeowners and businesses
+                alike, and we pride ourselves on providing the highest quality
+                service possible. If you’re looking for a professional TV
+                mounting service in Los Angeles, look no further than LA TV
+                Mounters. We have years of experience mounting TVs for both
+                residential and commercial clients. We can mount any TV,
+                regardless of size or weight, and we’ll ensure that it’s
+                securely attached to the wall so it won’t fall.
+              </p>
+              <p>
+                We also offer many other TV-related services, including cable
+                installation, home theater setup, and antenna installation.
+                We’re the only TV mounting service you’ll need, so don’t
+                hesitate to call us today. We’re available 24/7, and we offer
+                free estimates on all of our services.
+              </p>
+            </div>
           </div>
-          <p>Are you looking for a professional TV mounting service in Los Angeles? Look no further than LA TV Mounters. We offer a wide range of TV mounting services, from simple wall mounts to full-service installations. Every time, we get the job done right.</p>
-          <a class="button-link"
-                href="https://latvmounters.com/">Visit Us</a>
-      </section>
+          <p>
+            Are you looking for a professional TV mounting service in Los
+            Angeles? Look no further than LA TV Mounters. We offer a wide range
+            of TV mounting services, from simple wall mounts to full-service
+            installations. Every time, we get the job done right.
+          </p>
+          <a class="button-link" href="https://latvmounters.com/">Visit Us</a>
+        </section>
 
-      <section>
+        <section>
           <h2>Professional, Affordable, and Reliable.</h2>
-          <p>TV mounting service in Los Angeles. Our experts can help you select the perfect <a href="https://latvmounters.com/best-ways-to-find-a-reliable-tv-mount-installer-in-los-angeles/">mount and installation</a> for your home and TV. We offer a wide range of TV mounts, from low-profile fixed mounts to whole motion mounts that allow for greater flexibility in viewing angles. We also provide a full range of installation services, from simple wall installations to complex multi-unit installations.</p>
-          <p>Our TV mounting service is professional, affordable, and reliable. We provide a wide range of TV mounts to choose from, and our experts can help you select the perfect mount and installation for your home and TV. We offer a full range of installation services, from simple wall installations to complex multi-unit installations, so you can be sure your TV is securely mounted and looks great.</p>
-          <p>Our team of experts is based in Los Angeles and is familiar with the unique challenges of installing TVs in this area. We offer a wide range of services, from simple wall installations to complex multi-unit installations, so you can be sure your TV is securely mounted and looks great.</p>
-          <p>Are you looking for a professional TV mounting service in Los Angeles? Look no further than LA TV Mounters! We offer a wide range of services, from TV installation to wall mounting, and we have the experience and expertise to get the job done right. We understand that not everyone is familiar with the process of mounting a TV, so we take the time to explain everything to our clients and work with them to choose the best mounting option for their needs. We also offer competitive rates, so you can be sure you’re getting the best value for your money.</p>
-      </section>
+          <p>
+            TV mounting service in Los Angeles. Our experts can help you select
+            the perfect
+            <a
+              href="https://latvmounters.com/best-ways-to-find-a-reliable-tv-mount-installer-in-los-angeles/"
+              >mount and installation</a
+            >
+            for your home and TV. We offer a wide range of TV mounts, from
+            low-profile fixed mounts to whole motion mounts that allow for
+            greater flexibility in viewing angles. We also provide a full range
+            of installation services, from simple wall installations to complex
+            multi-unit installations.
+          </p>
+          <p>
+            Our TV mounting service is professional, affordable, and reliable.
+            We provide a wide range of TV mounts to choose from, and our experts
+            can help you select the perfect mount and installation for your home
+            and TV. We offer a full range of installation services, from simple
+            wall installations to complex multi-unit installations, so you can
+            be sure your TV is securely mounted and looks great.
+          </p>
+          <p>
+            Our team of experts is based in Los Angeles and is familiar with the
+            unique challenges of installing TVs in this area. We offer a wide
+            range of services, from simple wall installations to complex
+            multi-unit installations, so you can be sure your TV is securely
+            mounted and looks great.
+          </p>
+          <p>
+            Are you looking for a professional TV mounting service in Los
+            Angeles? Look no further than LA TV Mounters! We offer a wide range
+            of services, from TV installation to wall mounting, and we have the
+            experience and expertise to get the job done right. We understand
+            that not everyone is familiar with the process of mounting a TV, so
+            we take the time to explain everything to our clients and work with
+            them to choose the best mounting option for their needs. We also
+            offer competitive rates, so you can be sure you’re getting the best
+            value for your money.
+          </p>
+        </section>
 
-      <section>
+        <section>
           <div class="two-col">
-              <div>
-                  <h2>We Offer a Wide Range of TV Mounts and Installation Services.</h2>
-                  <p>TV mounting has become one of the most popular ways to display TVs in recent years. Not only does it look great, but it also frees up floor space and can provide a more immersive viewing experience. At LA TV Mounters, we offer a wide range of TV mounts and installation services to meet your needs.</p>
-                  <p>Were we looking for a professional TV mounting service in Los Angeles? Look no further than LA TV Mounters! We offer a full range of TV mounting services, from standard wall mounts to full-blown home theater installations. Our team of experienced professionals will cover everything, from planning and design to installation and cleanup. We’re dedicated to providing our clients with the highest quality service possible, and we always go the extra mile to make sure they’re delighted.</p>
-                  <p>Once you’ve found the perfect TV, it’s time to start thinking about where to put it. Many people choose to mount their TVs on the wall, and for a good reason: it’s a great way to save space and create a clean, streamlined look in your home theater or living room. But if you’re not familiar with TV mounting, it can be a daunting task. That’s where LA TV Mounters comes in. We’re experts in TV mounting, and we can help you get your new TV up on the wall quickly and safely, without any drama or stress.</p>
-              </div>
-              <div>
-                  <img style="height: 330px;" src="https://latvmounters.com/wp-content/uploads/2021/10/Affordable-TV-Mounting-Services-1024x682.jpg" alt="TV Mounting Service Los Angeles">
-                  <br>
-                  <br>
-                  <img style="height: 330px;" src="https://lh3.googleusercontent.com/geougc/AF1QipNvGxSoQtHH1IcUrtEoJABqKu5Srn7Wc9GjlDTO=h400-no" alt="TV Mounting Service Los Angeles">
-              </div>
+            <div>
+              <h2>
+                We Offer a Wide Range of TV Mounts and Installation Services.
+              </h2>
+              <p>
+                TV mounting has become one of the most popular ways to display
+                TVs in recent years. Not only does it look great, but it also
+                frees up floor space and can provide a more immersive viewing
+                experience. At LA TV Mounters, we offer a wide range of TV
+                mounts and installation services to meet your needs.
+              </p>
+              <p>
+                Were we looking for a professional TV mounting service in Los
+                Angeles? Look no further than LA TV Mounters! We offer a full
+                range of TV mounting services, from standard wall mounts to
+                full-blown home theater installations. Our team of experienced
+                professionals will cover everything, from planning and design to
+                installation and cleanup. We’re dedicated to providing our
+                clients with the highest quality service possible, and we always
+                go the extra mile to make sure they’re delighted.
+              </p>
+              <p>
+                Once you’ve found the perfect TV, it’s time to start thinking
+                about where to put it. Many people choose to mount their TVs on
+                the wall, and for a good reason: it’s a great way to save space
+                and create a clean, streamlined look in your home theater or
+                living room. But if you’re not familiar with TV mounting, it can
+                be a daunting task. That’s where LA TV Mounters comes in. We’re
+                experts in TV mounting, and we can help you get your new TV up
+                on the wall quickly and safely, without any drama or stress.
+              </p>
+            </div>
+            <div>
+              <img
+                style="height: 330px"
+                src="https://latvmounters.com/wp-content/uploads/2021/10/Affordable-TV-Mounting-Services-1024x682.jpg"
+                alt="TV Mounting Service Los Angeles"
+              />
+              <br />
+              <br />
+              <img
+                style="height: 330px"
+                src="https://lh3.googleusercontent.com/geougc/AF1QipNvGxSoQtHH1IcUrtEoJABqKu5Srn7Wc9GjlDTO=h400-no"
+                alt="TV Mounting Service Los Angeles"
+              />
+            </div>
           </div>
-          <a class="button-link"
-                href="https://google.com/maps/?cid=1230856629811416077">Find Us Here!</a>
-      </section>
+          <a
+            class="button-link"
+            href="https://google.com/maps/?cid=1230856629811416077"
+            >Find Us Here!</a
+          >
+        </section>
 
-      <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422613.01392768254!2d-118.457848!3d34.154933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1114e1955d580c0d!2sLA%20TV%20Mounters%20-%20TV%20Mounting%20Service%20Los%20Angeles!5e0!3m2!1sen!2sph!4v1649726758619!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">TV Mounting Service Los Angeles</iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422613.01392768254!2d-118.457848!3d34.154933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1114e1955d580c0d!2sLA%20TV%20Mounters%20-%20TV%20Mounting%20Service%20Los%20Angeles!5e0!3m2!1sen!2sph!4v1649726758619!5m2!1sen!2sph"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            >TV Mounting Service Los Angeles</iframe
+          >
+        </section>
 
-      <section>
-        <iframe src="https://travel.usnews.com/Los_Angeles_CA/Things_To_Do/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://travel.usnews.com/Los_Angeles_CA/Things_To_Do/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjNqJuLsI33AhWEtpYKHZqXDNMYABACGgJ0bA&ae=2&ohost=www.google.com&cid=CAESbeD2nInd64-2-MhdCSc9kBZhHaBcoCiteFtgtGxPeUz8UdM02aGipiR68tAlTxaNnA601bnkasuPZnoauFXi2wpmkw5DyRYGAG9-h2sLUm7OGZeMOUZRBiP26OZGRzrQUwx42v31S565ovBf3iQ&sig=AOD64_04e7JyySkXcFe5GjWZbrLBIbwmdQ&q&adurl&ved=2ahUKEwjF-5OLsI33AhVzIqYKHcD3D-IQ0Qx6BAgCEAE" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjNqJuLsI33AhWEtpYKHZqXDNMYABACGgJ0bA&ae=2&ohost=www.google.com&cid=CAESbeD2nInd64-2-MhdCSc9kBZhHaBcoCiteFtgtGxPeUz8UdM02aGipiR68tAlTxaNnA601bnkasuPZnoauFXi2wpmkw5DyRYGAG9-h2sLUm7OGZeMOUZRBiP26OZGRzrQUwx42v31S565ovBf3iQ&sig=AOD64_04e7JyySkXcFe5GjWZbrLBIbwmdQ&q&adurl&ved=2ahUKEwjF-5OLsI33AhVzIqYKHcD3D-IQ0Qx6BAgCEAE"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://latvmounters.com/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://latvmounters.com/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./media.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./media.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./index.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./index.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
- 
-      <section>
-        <!-- WEBSITE EMBED -->
+        <section>
+          <a
+            target="_bLank"
+            href="https://rank-fortress-digital-agency.github.io/latvmounters-03-22/"
+            >https://rank-fortress-digital-agency.github.io/latvmounters-03-22/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="http://latvmounters-03-22.s3-website-ap-southeast-1.amazonaws.com/"
+            >http://latvmounters-03-22.s3-website-ap-southeast-1.amazonaws.com/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="https://stirring-croquembouche-5b6bbc.netlify.app/"
+            >https://stirring-croquembouche-5b6bbc.netlify.app/</a
+          >
+        </section>
+      </div>
 
-        <!-- MEDIA ROOM -->
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/latvmounters">Facebook</a>
+            </li>
+            <li>
+              <a href="https://google.com/maps/?cid=1230856629811416077"
+                >Google Page</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCgosoqZbb2zuNNxdqTDSFfQ"
+                >Youtube</a
+              >
+            </li>
+            <li><a href="#">Pearltrees</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Google Site</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </section>
 
-        <!-- BUSINESS SITE -->
-       
-        <!-- PEARL TREES -->
-        
-        <!-- CLOUD STACK SITE -->
-        
-      </section>
-
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://latvmounters.com/">Main</a></li>
+            <li><a href="https://g.page/latvmounters?share">Maps</a></li>
+            <li><a href="./media.html">Media</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="side-bar">
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/latvmounters">Facebook</a></li>
-          <li><a href="https://google.com/maps/?cid=1230856629811416077">Google Page</a></li>
-          <li><a href="https://www.youtube.com/channel/UCgosoqZbb2zuNNxdqTDSFfQ">Youtube</a></li>
-          <li><a href="#">Pearltrees</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Google Site</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://latvmounters.com/">Main</a></li>
-          <li><a href="https://g.page/latvmounters?share">Maps</a></li>
-          <li><a href="./media.html">Media</a></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
